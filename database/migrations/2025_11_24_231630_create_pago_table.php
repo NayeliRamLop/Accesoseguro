@@ -32,6 +32,9 @@ return new class extends Migration
 
             // monto double NOT NULL
             $table->double('monto');
+
+              // fechaCompra varchar(20) NOT NULL
+            $table->string('fechaCompra', 20);
         });
     }
 

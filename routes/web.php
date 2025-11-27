@@ -4,12 +4,8 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\EventoController;
+use App\Http\Controllers\BoletoController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-*/
 
 // Home: si está autenticado va al dashboard, si no al login
 Route::get('/', function () {
@@ -35,15 +31,8 @@ Route::post('/login', function (Request $request) {
 
     $remember = $request->boolean('remember');
 
-    // IMPORTANTE:
-    // Aquí cambiamos el campo de búsqueda.
-    // En lugar de 'email' => ..., usamos la columna REAL de tu tabla.
-    // Si en tu tabla `usuario` la columna se llama:
-    // - 'correo'  -> deja como está
-    // - 'usuario' -> cambia 'correo' por 'usuario'
-    // - 'mail'    -> cambia por 'mail', etc.
     $credentials = [
-        'correo'   => $request->input('email'),   // <-- AJUSTA 'correo' si tu columna se llama diferente
+        'correo'   => $request->input('email'),
         'password' => $request->input('password'),
     ];
 
@@ -119,4 +108,40 @@ Route::middleware('auth')->group(function () {
 
         return redirect()->route('login');
     })->name('logout');
+
+    // Boletos - menú principal
+    Route::get('/boletos', [BoletoController::class, 'index'])
+        ->name('boletos.index');
+
+    // Boletos vendidos (con filtro por fecha)
+    Route::get('/boletos-vendidos', [BoletoController::class, 'vendidos'])
+        ->name('boletos.vendidos');
+
+    // Boletos escaneados (estaUsado = 1)
+    Route::get('/boletos-escaneados', [BoletoController::class, 'escaneados'])
+        ->name('boletos.escaneados');
+
+    // Reporte de todos los boletos (vista HTML)
+    Route::get('/boletos-reporte', [BoletoController::class, 'reporte'])
+        ->name('boletos.reporte');
+
+    // 🔹 NUEVO: Reporte de boletos en PDF
+    Route::get('/boletos-reporte-pdf', [BoletoController::class, 'reportePdf'])
+        ->name('boletos.reporte.pdf');
+               // VENTAS - menú
+    Route::get('/ventas', [BoletoController::class, 'ventas'])
+        ->name('ventas.index');
+
+    // PAGOS REALIZADOS
+    Route::get('/pagos-realizados', [BoletoController::class, 'pagosRealizados'])
+        ->name('pagos.realizados');
+
+    // REPORTE DE PAGOS (HTML)
+    Route::get('/pagos-reporte', [BoletoController::class, 'pagosReporte'])
+        ->name('pagos.reporte');
+
+    // REPORTE DE PAGOS (PDF)
+    Route::get('/pagos-reporte-pdf', [BoletoController::class, 'pagosReportePdf'])
+        ->name('pagos.reporte.pdf');
+
 });

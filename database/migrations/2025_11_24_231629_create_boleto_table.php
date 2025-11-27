@@ -21,8 +21,6 @@ return new class extends Migration
             // usuarioId int(50) NOT NULL
             $table->integer('usuarioId');
 
-            // fechaCompra varchar(20) NOT NULL
-            $table->string('fechaCompra', 20);
 
             // cantidad int(2) NOT NULL
             $table->integer('cantidad');
