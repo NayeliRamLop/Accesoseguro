@@ -4,17 +4,16 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\EventoController;
-<<<<<<< HEAD
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-*/
-=======
+
 use App\Http\Controllers\BoletoController;
 
->>>>>>> fac93c9e74fbc81afc92a4b034984aa93cb4236d
+
+
+
+
+
+
 
 // Home: si está autenticado va al dashboard, si no al login
 Route::get('/', function () {
@@ -40,27 +39,21 @@ Route::post('/login', function (Request $request) {
 
     $remember = $request->boolean('remember');
 
-<<<<<<< HEAD
+
+
     // IMPORTANTE:
     // Aquí cambiamos el campo de búsqueda.
     // En lugar de 'email' => ..., usamos la columna REAL de tu tabla.
-    // Si en tu tabla usuario la columna se llama:
-    // - 'correo'  -> deja como está
-    // - 'usuario' -> cambia 'correo' por 'usuario'
-    // - 'mail'    -> cambia por 'mail', etc.
+
+
     $credentials = [
-        'correo'   => $request->input('email'),   // <-- AJUSTA 'correo' si tu columna se llama diferente
-=======
-    $credentials = [
-        'correo'   => $request->input('email'),
->>>>>>> fac93c9e74fbc81afc92a4b034984aa93cb4236d
+        'correo'   => $request->input('email'),  
         'password' => $request->input('password'),
     ];
 
     if (Auth::attempt($credentials, $remember)) {
-        $request->session()->regenerate();
-
-        // Redirige a la página que quería ver o al dashboard
+      
+  $request->session()->regenerate();
         return redirect()->intended(route('dashboard'));
     }
 
@@ -68,6 +61,7 @@ Route::post('/login', function (Request $request) {
         'email' => 'Las credenciales no coinciden con nuestros registros.',
     ])->onlyInput('email');
 })->middleware('guest')->name('login.post');
+
 
 // Dashboard (protegido)
 Route::get('/dashboard', function () {
@@ -128,9 +122,11 @@ Route::middleware('auth')->group(function () {
         $request->session()->regenerateToken();
 
         return redirect()->route('login');
+
+
+
     })->name('logout');
-<<<<<<< HEAD
-=======
+
 
     // Boletos - menú principal
     Route::get('/boletos', [BoletoController::class, 'index'])
@@ -167,5 +163,5 @@ Route::middleware('auth')->group(function () {
     Route::get('/pagos-reporte-pdf', [BoletoController::class, 'pagosReportePdf'])
         ->name('pagos.reporte.pdf');
 
->>>>>>> fac93c9e74fbc81afc92a4b034984aa93cb4236d
+
 });
