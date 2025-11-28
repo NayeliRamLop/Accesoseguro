@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 3',
+    'title' => 'Acceso Seguro',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -63,12 +63,21 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
-    'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
-    'logo_img_class' => 'brand-image img-circle elevation-3',
-    'logo_img_xl' => null,
-    'logo_img_xl_class' => 'brand-image-xs',
-    'logo_img_alt' => 'Admin Logo',
+ // Dejamos el texto vacío para que no aparezca nada al lado del logo
+'logo' => '<b>Acceso</b>Seguro',   
+
+// MINI LOGO (cuando el sidebar está colapsado)
+'logo_img' => 'images/AS_logo_mini.png',
+'logo_img_class' => 'brand-image img-circle elevation-3',
+'logo_img_alt' => 'AccesoSeguro Mini Logo',
+
+// LOGO GRANDE (cuando el sidebar está expandido)
+
+'logo_img_xl' => 'images/AS_logo2.png',
+'logo_img_xl_class' => 'brand-logo', 
+// puedes agregar custom classes si quieres
+
+
 
     /*
     |--------------------------------------------------------------------------
@@ -257,7 +266,7 @@ return [
     */
 
     'use_route_url' => false,
-    'dashboard_url' => 'home',
+    'dashboard_url' => 'dashboard',
     'logout_url' => 'logout',
     'login_url' => 'login',
     'register_url' => 'register',
@@ -339,20 +348,20 @@ return [
             'icon' => 'fas fa-fw fa-lock',
         ],
         [
-            'text' => 'multilevel',
+            'text' => 'Menu',
             'icon' => 'fas fa-fw fa-share',
             'submenu' => [
                 [
                     'text' => 'level_one',
-                    'url' => '#',
+                    'url' => 'eventos',
                 ],
                 [
                     'text' => 'level_one',
-                    'url' => '#',
+                    'url' => 'boletos',
                     'submenu' => [
                         [
                             'text' => 'level_two',
-                            'url' => '#',
+                            'url' => 'ventas',
                         ],
                         [
                             'text' => 'level_two',

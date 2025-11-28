@@ -125,34 +125,12 @@ $porcentajeEventoMenorUso = $eventoMenorUso && $eventoMenorUso->vendidos > 0
 
 @endphp
 
-@section('css')
-<style>
-body,
-.content-wrapper,
-.main-footer {
-    background-color: #e4e3e5 !important;
-    color: #373737 !important;
-}
 
-.card {
-    background-color: #ffffff !important;
-    border: 1px solid #ddd !important;
-}
-
-.card-header {
-    background-color: #f4f4f4 !important;
-    border-bottom: 1px solid #ddd !important;
-}
-
-.badge-metric {
-    font-size: 0.85rem;
-    padding: 6px 10px;
-    border-radius: 999px;
-}
-</style>
-@endsection
 
 @section('content_header')
+
+<link rel="stylesheet" href="{{ asset('css/custom.css') }}">
+
     <div class="d-flex justify-content-between align-items-center">
         <h1 class="m-0"><b>Analisis de ventas</b></h1>
 

@@ -3,6 +3,10 @@
 @section('title', 'Eventos finalizados')
 
 @section('content_header')
+
+<link rel="stylesheet" href="{{ asset('css/custom.css') }}">
+
+
     <div class="d-flex justify-content-between align-items-center">
         <h1 class="m-0">Eventos finalizados</h1>
 

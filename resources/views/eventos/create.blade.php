@@ -3,6 +3,9 @@
 @section('title', 'Crear evento')
 
 @section('content_header')
+
+<link rel="stylesheet" href="{{ asset('css/custom.css') }}">
+
     <div class="d-flex justify-content-between align-items-center">
         <h1 class="m-0">Crear evento</h1>
     </div>
@@ -22,13 +25,11 @@
         </div>
     @endif
 
-    <div class="mb-3">
-        <a href="{{ route('eventos.index') }}" class="btn btn-outline-dark">
-            Volver a eventos
-        </a>
-    </div>
+     <div class="mb-3">
+   
+     </div>
 
-    <div class="card">
+     <div class="card">
         <div class="card-header">
             <h3 class="card-title">Nuevo evento</h3>
         </div>
@@ -153,6 +154,7 @@
                     </button>
                 </div>
             </form>
+            
         </div>
     </div>
 @stop

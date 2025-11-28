@@ -4,6 +4,7 @@
 @section('title', 'Reporte de boletos')
 
 {{-- CSS solo para este reporte --}}
+<link rel="stylesheet" href="{{ asset('css/custom.css') }}">
 @section('css')
     <style>
         /* Por si alguna otra paginación mete SVG, aquí los limitamos */

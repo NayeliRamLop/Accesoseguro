@@ -4,6 +4,9 @@
 @section('title', 'Boletos escaneados')
 
 @section('content_header')
+
+<link rel="stylesheet" href="{{ asset('css/custom.css') }}">
+
     <div class="d-flex justify-content-between align-items-center">
         <h1>Boletos escaneados</h1>
 

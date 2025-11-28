@@ -3,6 +3,8 @@
 
 @section('title', 'Reporte de pagos')
 
+<link rel="stylesheet" href="{{ asset('css/custom.css') }}">
+
 {{-- CSS para que las flechas de paginación no salgan gigantes --}}
 @section('css')
     <style>

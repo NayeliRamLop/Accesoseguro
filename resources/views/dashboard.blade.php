@@ -45,146 +45,11 @@
     $maxVentaMes       = max($ventasPorMes ?: [0]);
 @endphp
 
-@section('css')
-<style>
-body,
-.content-wrapper,
-.main-footer {
-    background-color: #e4e3e5 !important;
-    color: #373737 !important;
-}
 
-.main-header.navbar {
-    background-color: #575c9a !important;
-    border-bottom: 1px solid #e4e4e4 !important;
-}
-
-.navbar-light .navbar-nav .nav-link,
-.navbar-nav .nav-link {
-    color: #ccc !important;
-}
-
-.navbar-nav .nav-link:hover {
-    color: #fff !important;
-}
-
-.main-sidebar {
-    background-color: #434485 !important;
-}
-
-.sidebar-dark-primary .nav-sidebar > .nav-item > .nav-link.active {
-    background-color: #ffffff !important;
-    color: #e7e5e5 !important;
-    border-color: #ccc;
-}
-
-.nav-sidebar .nav-link {
-    color: #ccc !important;
-    border-color: #ccc;
-}
-
-.nav-sidebar .nav-link:hover {
-    background-color: #a9a9a9 !important;
-    color: #fff !important;
-    border-color: #ccc;
-}
-
-.small-box {
-    border-radius: 12px;
-    padding: 15px;
-    box-shadow: 0 0 15px rgba(142, 142, 142, 0.05);
-}
-
-.small-box.bg-primary {
-    background: linear-gradient(135deg, #243c68, #2a5298) !important;
-}
-
-.small-box.bg-success {
-    background: linear-gradient(135deg, #0f9b0f, #14cc60) !important;
-}
-
-.small-box.bg-info {
-    background: linear-gradient(135deg, #0f7ea5, #14c0cc) !important;
-}
-
-.small-box.bg-warning {
-    background: linear-gradient(135deg, #b8860b, #e8b923) !important;
-}
-
-.small-box-footer {
-    color: #fff !important;
-}
-
-.card {
-    background-color: #e5c9ff !important;
-    color: #333333 !important;
-    border: 1px solid #333 !important;
-}
-
-.card-header {
-    background-color: #d6d9ff !important;
-    border-bottom: 1px solid #646464 !important;
-}
-
-table {
-    color: #e5c9ff !important;
-}
-
-.table thead {
-    background-color: #888888 !important;
-}
-
-.table tbody tr {
-    background-color: #8d8a8a !important;
-}
-
-.table tbody tr:hover {
-    background-color: #959494 !important;
-}
-
-.btn {
-    border-radius: 8px;
-}
-
-.btn-primary {
-    background-color: #3d6df2 !important;
-    border-color: #3d6df2 !important;
-}
-
-.btn-danger {
-    background-color: #d93333 !important;
-    border-color: #d93333 !important;
-}
-
-.form-control {
-    background-color: #e8e8e8 !important;
-    border: 1px solid #333 !important;
-    color: #000000 !important;
-}
-
-.form-control:focus {
-    background-color: #1c1c1c !important;
-    border-color: #f4f4f4 !important;
-    color: #fff !important;
-}
-
-::-webkit-scrollbar {
-    width: 9px;
-}
-::-webkit-scrollbar-track {
-    background: #111;
-}
-::-webkit-scrollbar-thumb {
-    background: #333;
-    border-radius: 10px;
-}
-::-webkit-scrollbar-thumb:hover {
-    background: #444;
-}
-</style>
-@endsection
 
 @section('content_header')
+<link rel="stylesheet" href="{{ asset('css/custom.css') }}">
+
     <div class="d-flex justify-content-between align-items-center">
         <h1 class="m-0"><b>Acceso seguro</b></h1>
 
@@ -200,7 +65,7 @@ table {
 @section('content')
     <div class="row mb-3">
         <div class="col-12">
-            <p>Bienvenido al panel de control.</p>
+            <p>Bienvenido al panel de control</p>
         </div>
     </div>
 
@@ -253,8 +118,8 @@ table {
 
                 {{-- columna de filtros a la derecha --}}
                 <div class="col-md-3">
-                    <div class="p-3" style="background-color: #f4e6ff; border-radius: 10px;">
-                        <h5 class="mb-3" style="color:#000;"><b>Filtros</b></h5>
+                    <div class="p-3" style="background-color: #dbeefd; border-radius: 10px;">
+                        <h5 class="mb-3" style="color:#1e1e1e;"><b>Filtros</b></h5>
 
                         <form method="GET" action="{{ route('dashboard') }}">
                             <div class="form-group">
@@ -302,7 +167,7 @@ table {
 
         {{-- tarjeta boletos --}}
         <div class="col-lg-3 col-md-6 col-sm-12">
-            <div class="small-box bg-success">
+            <div class="small-box bg-info">
                 <div class="inner">
                     <h3>Boletos</h3>
                     <p>Listado de boletos</p>
@@ -318,7 +183,7 @@ table {
 
         {{-- tarjeta ventas --}}
         <div class="col-lg-3 col-md-6 col-sm-12">
-            <div class="small-box bg-info">
+            <div class="small-box bg-primary">
                 <div class="inner">
                     <h3>Ventas</h3>
                     <p>Resumen de ventas</p>
@@ -334,7 +199,7 @@ table {
 
         {{-- tarjeta panel de analisis --}}
         <div class="col-lg-3 col-md-6 col-sm-12">
-            <div class="small-box bg-warning">
+            <div class="small-box bg-info">
                 <div class="inner">
                     <h3>Panel de analisis</h3>
                     <p>Analisis de ventas y boletos</p>
@@ -371,21 +236,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 label: 'Ventas por mes',
                 data: @json($ventasPorMes),
                 backgroundColor: [
-                    'rgba(255, 80, 255, .9)',
-                    'rgba(50, 22, 235, .9)',
-                    'rgba(205, 10, 156, .9)',
-                    'rgba(0, 0, 192, .9)',
-                    'rgba(153, 30, 255, .9)',
-                    'rgba(225, 19, 224, .9)',
-                    'rgba(80, 80, 255, .9)',
-                    'rgba(80, 200, 255, .9)',
-                    'rgba(80, 255, 150, .9)',
-                    'rgba(255, 200, 80, .9)',
-                    'rgba(255, 120, 120, .9)',
-                    'rgba(180, 80, 255, .9)',
+                    'rgba(20, 100, 255, .9)',
+                    'rgba(100, 10, 255, .9)',
+                    'rgba(50, 200, 255, .9)',
+                    'rgba(100, 80, 255, .9)',
+                    'rgba(70, 150, 255, .9)',
+                    'rgba(130, 100, 255, .9)',
+                    'rgba(20, 100, 255, .9)',
+                    'rgba(100, 10, 255, .9)',
+                    'rgba(50, 200, 255, .9)',
+                    'rgba(100, 80, 255, .9)',
+                    'rgba(70, 150, 255, .9)',
+                    'rgba(130, 100, 255, .9)',
                 ],
                 borderColor: '#ffffff',
-                borderWidth: 2
+                borderWidth: 0
             }]
         },
         options: {

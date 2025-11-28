@@ -3,6 +3,9 @@
 @section('title', 'Eventos')
 
 @section('content_header')
+
+<link rel="stylesheet" href="{{ asset('css/custom.css') }}">
+
     <div class="d-flex justify-content-between align-items-center">
         <h1 class="m-0">Eventos</h1>
     </div>
@@ -16,32 +19,35 @@
         </div>
 
         <div class="card-body">
-            <div class="mb-3">
-                {{-- crear evento --}}
-                <a href="{{ route('eventos.create') }}" class="btn btn-primary mr-2">
-                    Crear evento
-                </a>
+           <div class="event-menu">
 
-                {{-- eventos disponibles --}}
-                <a href="{{ route('eventos.disponibles') }}" class="btn btn-success mr-2">
-                    Eventos disponibles
-                </a>
+    <a href="{{ route('eventos.create') }}" class="event-card create">
+        <div class="icon"><i class="fas fa-plus"></i></div>
+        <span>Crear evento</span>
+    </a>
 
-                {{-- eventos finalizados --}}
-                <a href="{{ route('eventos.finalizados') }}" class="btn btn-secondary mr-2">
-                    Eventos finalizados
-                </a>
+    <a href="{{ route('eventos.disponibles') }}" class="event-card disponibles">
+        <div class="icon"><i class="fas fa-calendar-check"></i></div>
+        <span>Eventos disponibles</span>
+    </a>
 
-                {{-- todos los eventos --}}
-                <a href="{{ route('eventos.todos') }}" class="btn btn-info mr-2">
-                    Todos los eventos
-                </a>
+    <a href="{{ route('eventos.finalizados') }}" class="event-card finalizados">
+        <div class="icon"><i class="fas fa-flag-checkered"></i></div>
+        <span>Eventos finalizados</span>
+    </a>
 
-                {{-- eventos sold out --}}
-                <a href="{{ route('eventos.soldout') }}" class="btn btn-outline-dark">
-                    Eventos sold out
-                </a>
-            </div>
+    <a href="{{ route('eventos.todos') }}" class="event-card todos">
+        <div class="icon"><i class="fas fa-list-ul"></i></div>
+        <span>Todos los eventos</span>
+    </a>
+
+    <a href="{{ route('eventos.soldout') }}" class="event-card soldout">
+        <div class="icon"><i class="fas fa-ban"></i></div>
+        <span>Eventos sold out</span>
+    </a>
+
+</div>
+
         </div>
     </div>
 

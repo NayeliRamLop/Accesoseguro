@@ -3,6 +3,8 @@
 @section('title', 'Eventos sold out')
 
 @section('content_header')
+<link rel="stylesheet" href="{{ asset('css/custom.css') }}">
+
     <div class="d-flex justify-content-between align-items-center">
         <h1 class="m-0">Eventos sold out</h1>
 
