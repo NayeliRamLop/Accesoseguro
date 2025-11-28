@@ -6,9 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Pago extends Model
 {
-<<<<<<< HEAD
-    //
-=======
     // Nombre de la tabla
     protected $table = 'pago';
 
@@ -40,5 +37,4 @@ class Pago extends Model
         // cámbialo aquí por 'boletold'
         // return $this->belongsTo(Boleto::class, 'boletold');
     }
->>>>>>> fac93c9e74fbc81afc92a4b034984aa93cb4236d
 }

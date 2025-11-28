@@ -7,18 +7,10 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
-<<<<<<< HEAD
-        "jeroennoten/laravel-adminlte": "^3.15",
-        "laravel/framework": "^12.0",
-        "laravel/jetstream": "^5.4",
-        "laravel/tinker": "^2.10.1",
-        "railsware/mailtrap-php": "^3.9"
-=======
         "barryvdh/laravel-dompdf": "^3.1",
         "jeroennoten/laravel-adminlte": "^3.15",
         "laravel/framework": "^12.0",
         "laravel/tinker": "^2.10.1"
->>>>>>> fac93c9e74fbc81afc92a4b034984aa93cb4236d
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",

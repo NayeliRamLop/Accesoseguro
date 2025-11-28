@@ -3,74 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-<<<<<<< HEAD
-=======
 use App\Models\Boleto;
 use App\Models\Evento;
 use App\Models\Usuario;
 use App\Models\Pago;
 use Barryvdh\DomPDF\Facade\Pdf;
->>>>>>> fac93c9e74fbc81afc92a4b034984aa93cb4236d
 
 class BoletoController extends Controller
 {
     /**
-<<<<<<< HEAD
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-=======
-     * Menú principal de boletos.
+     * Menu principal de boletos.
      */
     public function index()
     {
@@ -78,7 +20,7 @@ class BoletoController extends Controller
     }
 
     /**
-     * Menú principal de ventas (solo muestra las dos opciones).
+     * Menu principal de ventas (solo muestra las dos opciones).
      */
     public function ventas()
     {
@@ -105,7 +47,7 @@ class BoletoController extends Controller
 
         $pagos = $query->orderBy('fechaCompra', 'desc')->paginate(20);
 
-        // Total del monto SOLO de la página actual (igual que en boletos)
+        // Total del monto solo de la pagina actual
         $totalMonto = $pagos->sum('monto');
 
         return view('pagos_realizados', [
@@ -117,7 +59,7 @@ class BoletoController extends Controller
     }
 
     /**
-     * Reporte de pagos en pantalla (con filtros y PDF).
+     * Reporte de pagos en pantalla (con filtros).
      */
     public function pagosReporte(Request $request)
     {
@@ -172,23 +114,23 @@ class BoletoController extends Controller
         $totalMonto = $pagos->sum('monto');
 
         $pdf = Pdf::loadView('pagos_reporte_pdf', [
-            'pagos'        => $pagos,
-            'totalPagos'   => $totalPagos,
-            'totalMonto'   => $totalMonto,
-            'fechaGenerado'=> now(),
+            'pagos'         => $pagos,
+            'totalPagos'    => $totalPagos,
+            'totalMonto'    => $totalMonto,
+            'fechaGenerado' => now(),
         ])->setPaper('letter', 'portrait');
 
         return $pdf->download('reporte_pagos.pdf');
     }
 
     /**
-     * Boletos vendidos (con filtro por fecha y estado escaneado/no escaneado).
+     * Boletos vendidos (con filtro por fecha y estado escaneado o no).
      */
     public function vendidos(Request $request)
     {
         $desde  = $request->query('desde');
         $hasta  = $request->query('hasta');
-        $estado = $request->query('estado'); // 1 escaneado, 0 no, vacío todos
+        $estado = $request->query('estado'); // 1 escaneado, 0 no, vacio todos
 
         $query = Boleto::with(['evento', 'usuario', 'pago']);
 
@@ -219,16 +161,35 @@ class BoletoController extends Controller
     }
 
     /**
-     * Boletos escaneados (estaUsado = 1).
+     * Boletos escaneados (estaUsado = 1) con filtro por fecha.
      */
-    public function escaneados()
+    public function escaneados(Request $request)
     {
-        $boletos = Boleto::with(['evento', 'usuario', 'pago'])
-            ->where('estaUsado', 1)
-            ->orderBy('id', 'desc')
-            ->paginate(20);
+        $desde = $request->query('desde');
+        $hasta = $request->query('hasta');
 
-        return view('escaneados', compact('boletos'));
+        $query = Boleto::with(['evento', 'usuario', 'pago'])
+            ->where('estaUsado', 1);
+
+        if ($desde) {
+            $query->whereHas('pago', function ($q) use ($desde) {
+                $q->whereDate('fechaCompra', '>=', $desde);
+            });
+        }
+
+        if ($hasta) {
+            $query->whereHas('pago', function ($q) use ($hasta) {
+                $q->whereDate('fechaCompra', '<=', $hasta);
+            });
+        }
+
+        $boletos = $query->orderBy('id', 'desc')->paginate(20);
+
+        return view('escaneados', [
+            'boletos' => $boletos,
+            'desde'   => $desde,
+            'hasta'   => $hasta,
+        ]);
     }
 
     /**
@@ -258,7 +219,7 @@ class BoletoController extends Controller
             $query->where('estaUsado', $estado);
         }
 
-        $boletos = $query->orderBy('id', 'desc')->paginate(20);
+        $boletos = $query->orderBy('id', 'desc')->get();
 
         $totalBoletos = $boletos->sum('cantidad');
         $totalMonto   = $boletos->sum('precioTotal');
@@ -313,6 +274,5 @@ class BoletoController extends Controller
         ])->setPaper('letter', 'portrait');
 
         return $pdf->download('reporte_boletos.pdf');
->>>>>>> fac93c9e74fbc81afc92a4b034984aa93cb4236d
     }
 }

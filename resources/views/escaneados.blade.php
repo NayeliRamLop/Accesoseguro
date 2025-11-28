@@ -15,7 +15,7 @@
 
 @section('content')
 
-    {{-- FILTRO POR FECHA (igual que en vendidos, pero apuntando a escaneados) --}}
+    {{-- Filtros por fecha --}}
     <div class="card mb-3">
         <div class="card-header">
             <h3 class="card-title">Filtro por fecha de compra</h3>
@@ -51,7 +51,7 @@
         </div>
     </div>
 
-    {{-- LISTADO --}}
+    {{-- Tabla de boletos escaneados --}}
     <div class="card">
         <div class="card-header">
             <h3 class="card-title">Listado de boletos escaneados (estaUsado = 1)</h3>
@@ -89,11 +89,13 @@
                     </tbody>
                 </table>
 
-                {{-- PAGINACIÓN con Bootstrap y conservando filtros --}}
-                {{ $boletos->appends([
-                    'desde' => $desde,
-                    'hasta' => $hasta,
-                ])->links('pagination::bootstrap-4') }}
+                {{-- Paginación usando Bootstrap y conservando filtros --}}
+                {{ $boletos
+                    ->appends([
+                        'desde' => $desde,
+                        'hasta' => $hasta,
+                    ])
+                    ->links('pagination::bootstrap-4') }}
             @endif
         </div>
     </div>

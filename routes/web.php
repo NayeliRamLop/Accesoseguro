@@ -4,15 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\EventoController;
-
-
 use App\Http\Controllers\BoletoController;
-
-
-
-
-
-
 
 
 // Home: si está autenticado va al dashboard, si no al login
@@ -39,21 +31,15 @@ Route::post('/login', function (Request $request) {
 
     $remember = $request->boolean('remember');
 
-
-
-    // IMPORTANTE:
-    // Aquí cambiamos el campo de búsqueda.
-    // En lugar de 'email' => ..., usamos la columna REAL de tu tabla.
-
-
     $credentials = [
-        'correo'   => $request->input('email'),  
+        'correo'   => $request->input('email'),
         'password' => $request->input('password'),
     ];
 
     if (Auth::attempt($credentials, $remember)) {
-      
-  $request->session()->regenerate();
+        $request->session()->regenerate();
+
+        // Redirige a la página que quería ver o al dashboard
         return redirect()->intended(route('dashboard'));
     }
 
@@ -61,7 +47,6 @@ Route::post('/login', function (Request $request) {
         'email' => 'Las credenciales no coinciden con nuestros registros.',
     ])->onlyInput('email');
 })->middleware('guest')->name('login.post');
-
 
 // Dashboard (protegido)
 Route::get('/dashboard', function () {
@@ -122,11 +107,7 @@ Route::middleware('auth')->group(function () {
         $request->session()->regenerateToken();
 
         return redirect()->route('login');
-
-
-
     })->name('logout');
-
 
     // Boletos - menú principal
     Route::get('/boletos', [BoletoController::class, 'index'])
@@ -162,6 +143,10 @@ Route::middleware('auth')->group(function () {
     // REPORTE DE PAGOS (PDF)
     Route::get('/pagos-reporte-pdf', [BoletoController::class, 'pagosReportePdf'])
         ->name('pagos.reporte.pdf');
+        // panel de analisis de ventas
+    Route::get('/analisis-ventas', function () {
+          return view('analisis_ventas');
+         })->name('analisis.ventas');
 
 
 });
