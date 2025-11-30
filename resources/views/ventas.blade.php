@@ -19,7 +19,7 @@
     <div class="row">
         {{-- Pagos realizados --}}
         <div class="col-lg-6 col-md-6 col-sm-12">
-            <div class="small-box bg-info">
+            <div class="small-box bg-success">
                 <div class="inner">
                     <h3>Pagos realizados</h3>
                     <p>Listado de pagos con filtro por fecha</p>
@@ -35,7 +35,7 @@
 
         {{-- Reporte de pagos --}}
         <div class="col-lg-6 col-md-6 col-sm-12">
-            <div class="small-box bg-success">
+            <div class="small-box bg-info">
                 <div class="inner">
                     <h3>Reporte de pagos</h3>
                     <p>Resumen con totales y descarga en PDF</p>

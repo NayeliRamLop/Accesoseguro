@@ -63,20 +63,13 @@ return [
     |
     */
 
- // Dejamos el texto vacío para que no aparezca nada al lado del logo
-'logo' => '<b>Acceso</b>Seguro',   
-
-// MINI LOGO (cuando el sidebar está colapsado)
 'logo_img' => 'images/AS_logo_mini.png',
+
 'logo_img_class' => 'brand-image img-circle elevation-3',
 'logo_img_alt' => 'AccesoSeguro Mini Logo',
 
-// LOGO GRANDE (cuando el sidebar está expandido)
-
 'logo_img_xl' => 'images/AS_logo2.png',
 'logo_img_xl_class' => 'brand-logo', 
-// puedes agregar custom classes si quieres
-
 
 
     /*
@@ -329,79 +322,55 @@ return [
             'url' => 'admin/blog',
             'can' => 'manage-blog',
         ],
+
+
+        ['header' => 'Acceso Seguro'],
+  
         [
-            'text' => 'pages',
-            'url' => 'admin/pages',
-            'icon' => 'far fa-fw fa-file',
-            'label' => 4,
-            'label_color' => 'success',
+            'text' => 'Inicio',
+             'icon' => 'fas fa-home',
+            'url' => 'dashboard',
         ],
-        ['header' => 'account_settings'],
+     
+
+                ['header' => 'Menú'],
+
+       
+                [
+                    'text' => 'Eventos',
+                        'icon' => 'fas fa-calendar-day',
+                    'url' => 'eventos',
+                ],
+              
+                [
+                    'text' => 'Boletos',
+                        'icon' => '	fas fa-list-alt',
+                    'url' => 'boletos',
+                ],
+
+                [
+                    'text' => 'Ventas',
+                        'icon' => 'fas fa-dollar-sign',
+                    'url' => 'ventas',
+                ],
+
+                  [
+                    'text' => 'Panel de análisis',
+                        'icon' => 'fas fa-chart-line',
+                    'url' => 'analisis-ventas',
+                ],
+       
+
+          ['header' => 'Configuración de la cuenta'],
         [
-            'text' => 'profile',
+            'text' => 'Perfil',
             'url' => 'admin/settings',
             'icon' => 'fas fa-fw fa-user',
         ],
-        [
-            'text' => 'change_password',
-            'url' => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
-        ],
-        [
-            'text' => 'Menu',
-            'icon' => 'fas fa-fw fa-share',
-            'submenu' => [
-                [
-                    'text' => 'level_one',
-                    'url' => 'eventos',
-                ],
-                [
-                    'text' => 'level_one',
-                    'url' => 'boletos',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url' => 'ventas',
-                        ],
-                        [
-                            'text' => 'level_two',
-                            'url' => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url' => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url' => '#',
-                                ],
-                            ],
-                        ],
-                    ],
-                ],
-                [
-                    'text' => 'level_one',
-                    'url' => '#',
-                ],
-            ],
-        ],
-        ['header' => 'labels'],
-        [
-            'text' => 'important',
-            'icon_color' => 'red',
-            'url' => '#',
-        ],
-        [
-            'text' => 'warning',
-            'icon_color' => 'yellow',
-            'url' => '#',
-        ],
-        [
-            'text' => 'information',
-            'icon_color' => 'cyan',
-            'url' => '#',
-        ],
+
     ],
+    
+   
 
     /*
     |--------------------------------------------------------------------------

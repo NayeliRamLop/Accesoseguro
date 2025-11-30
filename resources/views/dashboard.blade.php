@@ -151,7 +151,7 @@
     <div class="row mt-4">
         {{-- tarjeta eventos --}}
         <div class="col-lg-3 col-md-6 col-sm-12">
-            <div class="small-box bg-primary">
+            <div class="small-box bg-warning">
                 <div class="inner">
                     <h3>Eventos</h3>
                     <p>Gestion de eventos</p>
@@ -199,7 +199,7 @@
 
         {{-- tarjeta panel de analisis --}}
         <div class="col-lg-3 col-md-6 col-sm-12">
-            <div class="small-box bg-info">
+            <div class="small-box bg-success">
                 <div class="inner">
                     <h3>Panel de analisis</h3>
                     <p>Analisis de ventas y boletos</p>
@@ -225,6 +225,23 @@ document.addEventListener('DOMContentLoaded', () => {
     const ctx = canvas.getContext('2d');
     const maxVentaMes = @json($maxVentaMes);
 
+    const rootStyles = getComputedStyle(document.documentElement);
+
+    const chartColors = [
+        rootStyles.getPropertyValue('--chart-color-1'),
+        rootStyles.getPropertyValue('--chart-color-2'),
+        rootStyles.getPropertyValue('--chart-color-3'),
+        rootStyles.getPropertyValue('--chart-color-4'),
+        rootStyles.getPropertyValue('--chart-color-5'),
+        rootStyles.getPropertyValue('--chart-color-6'),
+        rootStyles.getPropertyValue('--chart-color-1'),
+        rootStyles.getPropertyValue('--chart-color-2'),
+        rootStyles.getPropertyValue('--chart-color-3'),
+        rootStyles.getPropertyValue('--chart-color-4'),
+        rootStyles.getPropertyValue('--chart-color-5'),
+        rootStyles.getPropertyValue('--chart-color-6'),
+    ];
+
     new Chart(ctx, {
         type: 'polarArea',
         data: {
@@ -235,20 +252,7 @@ document.addEventListener('DOMContentLoaded', () => {
             datasets: [{
                 label: 'Ventas por mes',
                 data: @json($ventasPorMes),
-                backgroundColor: [
-                    'rgba(20, 100, 255, .9)',
-                    'rgba(100, 10, 255, .9)',
-                    'rgba(50, 200, 255, .9)',
-                    'rgba(100, 80, 255, .9)',
-                    'rgba(70, 150, 255, .9)',
-                    'rgba(130, 100, 255, .9)',
-                    'rgba(20, 100, 255, .9)',
-                    'rgba(100, 10, 255, .9)',
-                    'rgba(50, 200, 255, .9)',
-                    'rgba(100, 80, 255, .9)',
-                    'rgba(70, 150, 255, .9)',
-                    'rgba(130, 100, 255, .9)',
-                ],
+                backgroundColor: chartColors,
                 borderColor: '#ffffff',
                 borderWidth: 0
             }]
@@ -256,9 +260,7 @@ document.addEventListener('DOMContentLoaded', () => {
         options: {
             maintainAspectRatio: false,
             plugins: {
-                legend: {
-                    position: 'bottom'
-                },
+                legend: { position: 'bottom' },
                 tooltip: {
                     callbacks: {
                         label: function(context) {
@@ -269,14 +271,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 }
             },
-            layout: {
-                padding: 20
-            },
+            layout: { padding: 20 },
             scales: {
                 r: {
-                    ticks: {
-                        display: false
-                    },
+                    ticks: { display: false },
                     suggestedMax: maxVentaMes ? maxVentaMes * 1.1 : undefined
                 }
             }
@@ -284,4 +282,5 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 </script>
+
 @endsection

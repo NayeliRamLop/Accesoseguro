@@ -142,6 +142,21 @@ $porcentajeEventoMenorUso = $eventoMenorUso && $eventoMenorUso->vendidos > 0
 
 @section('content')
 
+
+<script>
+function getChartColors() {
+    const style = getComputedStyle(document.documentElement);
+    return [
+        style.getPropertyValue('--chart-color-1').trim(),
+        style.getPropertyValue('--chart-color-2').trim(),
+        style.getPropertyValue('--chart-color-3').trim(),
+        style.getPropertyValue('--chart-color-4').trim(),
+        style.getPropertyValue('--chart-color-5').trim(),
+        style.getPropertyValue('--chart-color-6').trim(),
+    ];
+}
+</script>
+
     {{-- FILTROS --}}
     <div class="card mb-3">
         <div class="card-header">
@@ -193,7 +208,7 @@ $porcentajeEventoMenorUso = $eventoMenorUso && $eventoMenorUso->vendidos > 0
             <div class="col-md-3 col-sm-6 mb-3">
                 <div class="card">
                     <div class="card-body">
-                        <span class="badge badge-metric bg-primary text-white">Total ventas</span>
+                        <span class="badge badge-metric bg-info text-white">Total ventas</span>
                         <h3 class="mt-2 mb-1">${{ number_format($totalVentas, 2) }}</h3>
                         <small>Monto total en el periodo seleccionado</small>
                     </div>
@@ -203,7 +218,7 @@ $porcentajeEventoMenorUso = $eventoMenorUso && $eventoMenorUso->vendidos > 0
             <div class="col-md-3 col-sm-6 mb-3">
                 <div class="card">
                     <div class="card-body">
-                        <span class="badge badge-metric bg-success text-white">Pagos</span>
+                        <span class="badge badge-metric bg-info text-white">Pagos</span>
                         <h3 class="mt-2 mb-1">{{ $totalPagos }}</h3>
                         <small>Pagos registrados en el periodo</small>
                     </div>
@@ -229,7 +244,7 @@ $porcentajeEventoMenorUso = $eventoMenorUso && $eventoMenorUso->vendidos > 0
             <div class="col-md-3 col-sm-6 mb-3">
                 <div class="card">
                     <div class="card-body">
-                        <span class="badge badge-metric bg-warning text-white">Promedio diario</span>
+                        <span class="badge badge-metric bg-info text-white">Promedio diario</span>
                         <h3 class="mt-2 mb-1">${{ number_format($promedioDiario, 2) }}</h3>
                         <small>Promedio de ventas por dia con movimiento</small>
                     </div>
@@ -244,7 +259,7 @@ $porcentajeEventoMenorUso = $eventoMenorUso && $eventoMenorUso->vendidos > 0
             <div class="col-md-3 col-sm-6 mb-3">
                 <div class="card">
                     <div class="card-body">
-                        <span class="badge badge-metric bg-primary text-white">Boletos vendidos</span>
+                        <span class="badge badge-metric bg-info text-white">Boletos vendidos</span>
                         <h3 class="mt-2 mb-1">{{ $totalBoletosVendidos }}</h3>
                         <small>Total de boletos vendidos en el periodo</small>
                     </div>
@@ -254,7 +269,7 @@ $porcentajeEventoMenorUso = $eventoMenorUso && $eventoMenorUso->vendidos > 0
             <div class="col-md-3 col-sm-6 mb-3">
                 <div class="card">
                     <div class="card-body">
-                        <span class="badge badge-metric bg-success text-white">Boletos escaneados</span>
+                        <span class="badge badge-metric bg-info text-white">Boletos escaneados</span>
                         <h3 class="mt-2 mb-1">{{ $totalBoletosEscaneados }}</h3>
                         <small>Boletos marcados como usados</small>
                     </div>
@@ -274,7 +289,7 @@ $porcentajeEventoMenorUso = $eventoMenorUso && $eventoMenorUso->vendidos > 0
             <div class="col-md-3 col-sm-6 mb-3">
                 <div class="card">
                     <div class="card-body">
-                        <span class="badge badge-metric bg-warning text-white">Evento destacado</span>
+                        <span class="badge badge-metric bg-info text-white">Evento destacado</span>
                         <h3 class="mt-2 mb-1">
                             @if ($nombreEventoMasVendidos)
                                 {{ $nombreEventoMasVendidos }}
@@ -347,7 +362,9 @@ $porcentajeEventoMenorUso = $eventoMenorUso && $eventoMenorUso->vendidos > 0
 document.addEventListener('DOMContentLoaded', () => {
     const fuente = @json($fuente ?? '');
 
-    // ventas por dia
+    // ============================
+    //   VENTAS POR DIA (LINE)
+    // ============================
     if (fuente === '' || fuente === null || fuente === 'pagos') {
         const ctxVentasDia = document.getElementById('chartVentasDia');
         if (ctxVentasDia) {
@@ -356,8 +373,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 data: {
                     labels: @json($labelsVentasDia),
                     datasets: [{
-                        label: 'Ventas por dia',
+                        label: 'Ventas por día',
                         data: @json($datosVentasDia),
+                        borderColor: getChartColors()[0],
+                        backgroundColor: getChartColors()[1],
                         borderWidth: 2,
                         fill: false,
                         tension: 0.25
@@ -366,14 +385,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 options: {
                     maintainAspectRatio: false,
                     scales: {
-                        y: {
-                            beginAtZero: true
-                        }
+                        y: { beginAtZero: true }
                     }
                 }
             });
         }
 
+        // ============================
+        //   VENTAS POR EVENTO (DOUGHNUT)
+        // ============================
         const ctxVentasEvento = document.getElementById('chartVentasEvento');
         if (ctxVentasEvento) {
             new Chart(ctxVentasEvento.getContext('2d'), {
@@ -382,23 +402,25 @@ document.addEventListener('DOMContentLoaded', () => {
                     labels: @json($labelsVentasEvento),
                     datasets: [{
                         data: @json($datosVentasEvento),
+                        backgroundColor: getChartColors(),
                         borderWidth: 1
                     }]
                 },
                 options: {
                     maintainAspectRatio: false,
                     plugins: {
-                        legend: {
-                            position: 'bottom'
-                        }
+                        legend: { position: 'bottom' }
                     }
                 }
             });
         }
     }
 
-    // boletos por evento
+    // ============================
+    //     BOLETOS POR EVENTO (BAR)
+    // ============================
     if (fuente === '' || fuente === null || fuente === 'boletos') {
+
         const ctxBoletosEvento = document.getElementById('chartBoletosEvento');
         if (ctxBoletosEvento) {
             new Chart(ctxBoletosEvento.getContext('2d'), {
@@ -408,20 +430,23 @@ document.addEventListener('DOMContentLoaded', () => {
                     datasets: [{
                         label: 'Boletos vendidos',
                         data: @json($datosBoletosVendidos),
+                        backgroundColor: getChartColors()[0],
+                        borderColor: getChartColors()[1],
                         borderWidth: 1
                     }]
                 },
                 options: {
                     maintainAspectRatio: false,
                     scales: {
-                        y: {
-                            beginAtZero: true
-                        }
+                        y: { beginAtZero: true }
                     }
                 }
             });
         }
 
+        // ============================
+        //  VENDIDOS vs ESCANEADOS (BAR)
+        // ============================
         const ctxBoletosVE = document.getElementById('chartBoletosVendidosEscaneados');
         if (ctxBoletosVE) {
             new Chart(ctxBoletosVE.getContext('2d'), {
@@ -432,11 +457,15 @@ document.addEventListener('DOMContentLoaded', () => {
                         {
                             label: 'Vendidos',
                             data: @json($datosBoletosVendidos),
+                            backgroundColor: getChartColors()[0],
+                            borderColor: getChartColors()[0],
                             borderWidth: 1
                         },
                         {
                             label: 'Escaneados',
                             data: @json($datosBoletosEscaneados),
+                            backgroundColor: getChartColors()[2],
+                            borderColor: getChartColors()[2],
                             borderWidth: 1
                         }
                     ]
@@ -444,9 +473,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 options: {
                     maintainAspectRatio: false,
                     scales: {
-                        y: {
-                            beginAtZero: true
-                        }
+                        y: { beginAtZero: true }
                     }
                 }
             });
