@@ -2,64 +2,57 @@
 
 @section('title', 'Boletos')
 
-
 @section('content_header')
 <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
-
-    <div class="d-flex justify-content-between align-items-center">
-        <h1>Boletos</h1>
-
-        <a href="{{ route('dashboard') }}" class="btn btn-secondary">
-            Volver al menu principal
-        </a>
-    </div>
 @stop
 
 @section('content')
-    <div class="row">
-        {{-- Boletos vendidos --}}
-        <div class="col-md-4">
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">Boletos vendidos</h3>
-                </div>
-                <div class="card-body">
-                    <p>Consulta los boletos vendidos con filtro por fecha.</p>
-                    <a href="{{ route('boletos.vendidos') }}" class="btn btn-primary">
-                        Ver boletos vendidos
-                    </a>
-                </div>
+
+<div class="mt-3 mb-4 text-center" style="padding: 20px 0;">
+    <h1 style="font-size: 2.8rem; font-weight: 600;">Gestión de boletos</h1>
+
+    <p style="
+        font-size: 1.6rem;
+        font-weight: 300;
+        color: #464646;
+        max-width: 780px;
+        margin: 15px auto 0 auto;
+        line-height: 1.5;
+    ">
+        Administra todos los boletos generados para tus eventos: ventas, escaneos,
+        validaciones y control de acceso.
+    </p>
+</div>
+
+<div class="container" style="max-width: 1300px;">
+
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Menú de boletos</h3>
+        </div>
+
+        <div class="card-body">
+            <div class="event-menu">
+
+                <a href="{{ route('boletos.vendidos') }}" class="event-card">
+                    <div class="icon"><i class="fas fa-ticket-alt"></i></div>
+                    <span>Boletos vendidos</span>
+                </a>
+
+                <a href="{{ route('boletos.escaneados') }}" class="event-card">
+                    <div class="icon"><i class="fas fa-qrcode"></i></div>
+                    <span>Boletos escaneados</span>
+                </a>
+
+                <a href="{{ route('boletos.reporte') }}" class="event-card">
+                    <div class="icon"><i class="fas fa-file-alt"></i></div>
+                    <span>Reporte de boletos</span>
+                </a>
+
             </div>
         </div>
 
-        {{-- Boletos escaneados --}}
-        <div class="col-md-4">
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">Boletos escaneados</h3>
-                </div>
-                <div class="card-body">
-                    <p>Listado de boletos que ya fueron escaneados.</p>
-                    <a href="{{ route('boletos.escaneados') }}" class="btn btn-warning">
-                        Ver boletos escaneados
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        {{-- Reporte de boletos --}}
-        <div class="col-md-4">
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">Reporte de boletos</h3>
-                </div>
-                <div class="card-body">
-                    <p>Reporte general de todos los boletos registrados.</p>
-                    <a href="{{ route('boletos.reporte') }}" class="btn btn-info">
-                        Ver reporte de boletos
-                    </a>
-                </div>
-            </div>
-        </div>
     </div>
+</div>
+
 @stop

@@ -10,7 +10,7 @@
     <div class="d-flex justify-content-between align-items-center">
         <h1 class="m-0">Eventos disponibles</h1>
 
-        <a href="{{ route('eventos.index') }}" class="btn btn-outline-dark">
+        <a href="{{ route('eventos.index') }}" class="btn btn-outline-secondary">
             Volver a eventos
         </a>
     </div>
@@ -64,10 +64,10 @@
                     <tr>
                        
                         <th>Titulo</th>
-                        <th>Descripcion</th>
+                        <th>Descripción</th>
                         <th>Fecha</th>
                         <th>Hora</th>
-                        <th>Ubicacion</th>
+                        <th>Ubicación</th>
                         <th>Precio</th>
                         <th>Imagen</th>
                         <th>Boletos disponibles</th>
@@ -162,7 +162,7 @@
                         </div>
 
                         <div class="form-group mb-3">
-                            <label for="edit_descripcion_disponibles">Descripcion</label>
+                            <label for="edit_descripcion_disponibles">Descripción</label>
                             <textarea id="edit_descripcion_disponibles" name="descripcion" class="form-control" rows="3" required></textarea>
                         </div>
 
@@ -177,7 +177,7 @@
                         </div>
 
                         <div class="form-group mb-3">
-                            <label for="edit_ubicacion_disponibles">Ubicacion</label>
+                            <label for="edit_ubicacion_disponibles">Ubicación</label>
                             <input type="text" id="edit_ubicacion_disponibles" name="ubicacion" class="form-control" required>
                         </div>
 
@@ -212,7 +212,7 @@
                     </div>
 
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">
                             Cancelar
                         </button>
                         <button type="submit" class="btn btn-primary">

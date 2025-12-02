@@ -22,8 +22,7 @@
 @section('content')
     {{-- Botón volver --}}
     <div class="mb-3">
-        <a href="{{ route('boletos.index') }}" class="btn btn-secondary btn-sm">
-            <i class="fas fa-arrow-left"></i> Volver a boletos
+        <a href="{{ route('boletos.index') }}" class="btn btn-outline-secondary">Volver a boletos
         </a>
     </div>
 

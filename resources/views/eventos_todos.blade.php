@@ -10,7 +10,7 @@
     <div class="d-flex justify-content-between align-items-center">
         <h1 class="m-0">Todos los eventos</h1>
 
-        <a href="{{ route('eventos.index') }}" class="btn btn-outline-dark">
+        <a href="{{ route('eventos.index') }}" class="btn btn-outline-secondary">
             Volver a eventos
         </a>
     </div>
@@ -63,11 +63,11 @@
                 <thead>
                     <tr>
                        
-                        <th>Titulo</th>
-                        <th>Descripcion</th>
+                        <th>Título</th>
+                        <th>Descripción</th>
                         <th>Fecha</th>
                         <th>Hora</th>
-                        <th>Ubicacion</th>
+                        <th>Ubicación</th>
                         <th>Precio</th>
                         <th>Imagen</th>
                         <th>Boletos disponibles</th>
@@ -155,12 +155,12 @@
                     <div class="modal-body">
 
                         <div class="form-group mb-3">
-                            <label for="edit_titulo_todos">Titulo</label>
+                            <label for="edit_titulo_todos">Título</label>
                             <input type="text" id="edit_titulo_todos" name="titulo" class="form-control" required>
                         </div>
 
                         <div class="form-group mb-3">
-                            <label for="edit_descripcion_todos">Descripcion</label>
+                            <label for="edit_descripcion_todos">Descripción</label>
                             <textarea id="edit_descripcion_todos" name="descripcion" class="form-control" rows="3" required></textarea>
                         </div>
 
@@ -175,7 +175,7 @@
                         </div>
 
                         <div class="form-group mb-3">
-                            <label for="edit_ubicacion_todos">Ubicacion</label>
+                            <label for="edit_ubicacion_todos">Ubicación</label>
                             <input type="text" id="edit_ubicacion_todos" name="ubicacion" class="form-control" required>
                         </div>
 
@@ -210,7 +210,7 @@
                     </div>
 
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">
                             Cancelar
                         </button>
                         <button type="submit" class="btn btn-primary">

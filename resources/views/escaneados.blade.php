@@ -10,9 +10,7 @@
     <div class="d-flex justify-content-between align-items-center">
         <h1>Boletos escaneados</h1>
 
-        <a href="{{ route('boletos.index') }}" class="btn btn-secondary">
-            <i class="fas fa-arrow-left"></i> Volver a Boletos
-        </a>
+        <a href="{{ route('boletos.index') }}" class="btn btn-outline-secondary">Volver a Boletos</a>
     </div>
 @stop
 

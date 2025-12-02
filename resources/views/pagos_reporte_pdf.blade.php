@@ -33,7 +33,7 @@
     <h1>Reporte de pagos</h1>
 
     <div class="resumen">
-        <strong>Fecha de generacion:</strong> {{ $fechaGenerado }}<br>
+        <strong>Fecha de generación:</strong> {{ $fechaGenerado }}<br>
         <strong>Total de pagos:</strong> {{ $totalPagos }}<br>
         <strong>Total monto:</strong> ${{ number_format($totalMonto, 2) }}
     </div>
@@ -43,7 +43,7 @@
             <tr>
                 <th>Número de tarjeta</th>
                 <th>Titular</th>
-                <th>Fecha de expiracion</th>
+                <th>Fecha de expiración</th>
                 <th>Monto</th>
                 <th>Fecha de compra</th>
             </tr>

@@ -1,7 +1,7 @@
 body,
 .content-wrapper,
 .main-footer {
-    background-color: #e6eaec !important;
+    background-color: #f6f6f6 !important;
     color: #373737 !important;
 }
 
@@ -22,6 +22,12 @@ h1 {
     align-self: center;
 
 }
+
+.login-logo {
+ color: #7719D6!important;
+}
+
+
 
 
 .navbar-light .navbar-nav .nav-link,
@@ -77,7 +83,8 @@ h1 {
 }
 
 .small-box.bg-warning {
-    background: linear-gradient(135deg, #0d70a2, rgb(123, 220, 255)) !important;
+    background: linear-gradient(135deg, #0d70a2, #CCEEF4) !important;
+
 }
 
 .small-box-footer {
@@ -86,14 +93,28 @@ h1 {
 
 .card {
     background-color: #ecf3fc !important;
-    color: #333333 !important;
+    color: #313131 !important;
 
 }
+
 .card-title {
     font-weight: bold;
 }
 .card-header {
     background-color: #d6e7ff !important;
+}
+
+.card-body {
+       
+padding: 10px;
+}
+
+.badge {
+   font-size: 16px; 
+}
+
+.card-body small {
+   font-size: 14px; 
 }
 
 table {
@@ -109,21 +130,31 @@ table {
 }
 
 .table tbody tr:hover {
-    background-color: #959494 !important;
+    background-color: #d4d4d4 !important;
 }
+
 
 .btn {
     border-radius: 8px;
+       color: #fff !important;
 }
 
 .btn-primary {
-    background-color: #4389d9 !important;
+    background-color: #d9336d !important;
       color: #fff !important;
         border: 0px;
 }
 
+
+.btn-primary:hover {
+    background-color: #f75d93 !important;
+      color: #fff !important;
+        border: 0px;
+}
+
+
 .btn-warning {
-    background-color: #7719D6 !important;
+    background-color: #d9336d !important;
         color: #fff !important;
         border: 0px;
 }
@@ -131,6 +162,18 @@ table {
 .btn-danger {
     background-color: #d9336d !important;
       color: #fff !important;
+        border: 0px;
+}
+
+.btn-outline-secondary{
+     background-color: #ffffff !important;
+       color: #464646 !important;
+        border: 0px;
+}
+
+.btn-outline-secondary:hover{
+     background-color: #a1ddfb !important;
+       color: #464646 !important;
         border: 0px;
 }
 
@@ -142,7 +185,7 @@ table {
 
 .form-control:focus {
     background-color: #ffffff !important;
-    border-color: #f4f4f4 !important;
+    border-color: #939393 !important;
     color: #373737 !important;
 }
 
@@ -160,11 +203,13 @@ table {
     background: #444;
 }
 
-.event-menu {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 20px;
-    padding: 10px 0;
+.event-menu { 
+  display: flex;
+    justify-content: center;   /* Centra horizontalmente */
+    flex-wrap: wrap;           /* Permite que salten a otra línea */
+    gap: 25px;
+    margin: 20px;
+
 }
 
 .event-card {
@@ -174,6 +219,7 @@ table {
     align-items: center;
     padding: 25px 20px;
     background: #ffffff;
+     background: linear-gradient(135deg, #e7e1ff 0%, #f3f6f9 100%);
     border-radius: 15px;
     text-decoration: none !important;
     color: #333;
@@ -181,24 +227,22 @@ table {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     transition: all .25s ease;
     border: 1px solid #e5e5e5;
+
+    min-width: 200px;   /* ← MISMO TAMAÑO SIN CAMBIAR DISEÑO */
 }
+
 
 .event-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+    color: #7719D6;
 }
 
 .event-card .icon {
     font-size: 32px;
     margin-bottom: 10px;
+      color: #C2175B;
 }
-
-/* Colores personalizados */
-.event-card.create   .icon { color: #4389D9; }
-.event-card.disponibles .icon { color: #7719D6; }
-.event-card.finalizados .icon { color: #C2175B; }
-.event-card.todos .icon { color: #17a2b8; }
-.event-card.soldout .icon { color: #c193e8; }
 
 :root {
     --chart-color-1: #21569c;
@@ -208,4 +252,17 @@ table {
     --chart-color-5: #C2175B;
     --chart-color-6: #FF9EF1;
 }
+
+
+
+.small-box.bg-warning .small-box-footer {
+    color: #ffffff !important;
+}
+
+.small-box.bg-warning .inner,
+.small-box.bg-warning h3,
+.small-box.bg-warning p {
+    color: #ffffff !important;
+}
+
 

@@ -8,7 +8,7 @@
     <div class="d-flex justify-content-between align-items-center">
         <h1 class="m-0">Eventos sold out</h1>
 
-        <a href="{{ route('eventos.index') }}" class="btn btn-outline-dark">
+        <a href="{{ route('eventos.index') }}" class="btn btn-outline-secondary">
             Volver a eventos
         </a>
     </div>
@@ -61,11 +61,11 @@
                 <thead>
                     <tr>
                         
-                        <th>Titulo</th>
-                        <th>Descripcion</th>
+                        <th>Título</th>
+                        <th>Descripción</th>
                         <th>Fecha</th>
                         <th>Hora</th>
-                        <th>Ubicacion</th>
+                        <th>Ubicación</th>
                         <th>Precio</th>
                         <th>Imagen</th>
                         <th>Boletos disponibles</th>
@@ -153,12 +153,12 @@
                     <div class="modal-body">
 
                         <div class="form-group mb-3">
-                            <label for="edit_titulo_soldout">Titulo</label>
+                            <label for="edit_titulo_soldout">Título</label>
                             <input type="text" id="edit_titulo_soldout" name="titulo" class="form-control" required>
                         </div>
 
                         <div class="form-group mb-3">
-                            <label for="edit_descripcion_soldout">Descripcion</label>
+                            <label for="edit_descripcion_soldout">Descripción</label>
                             <textarea id="edit_descripcion_soldout" name="descripcion" class="form-control" rows="3" required></textarea>
                         </div>
 
@@ -173,7 +173,7 @@
                         </div>
 
                         <div class="form-group mb-3">
-                            <label for="edit_ubicacion_soldout">Ubicacion</label>
+                            <label for="edit_ubicacion_soldout">Ubicación</label>
                             <input type="text" id="edit_ubicacion_soldout" name="ubicacion" class="form-control" required>
                         </div>
 
@@ -208,7 +208,7 @@
                     </div>
 
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">
                             Cancelar
                         </button>
                         <button type="submit" class="btn btn-primary">

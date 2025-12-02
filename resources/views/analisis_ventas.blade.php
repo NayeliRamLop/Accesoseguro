@@ -132,16 +132,15 @@ $porcentajeEventoMenorUso = $eventoMenorUso && $eventoMenorUso->vendidos > 0
 <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
 
     <div class="d-flex justify-content-between align-items-center">
-        <h1 class="m-0"><b>Analisis de ventas</b></h1>
+        <h1 class="m-0"><b>Análisis de ventas</b></h1>
+      
 
-        <a href="{{ route('dashboard') }}" class="btn btn-secondary btn-sm">
-            <i class="fas fa-arrow-left"></i> Volver al dashboard
-        </a>
-    </div>
 @endsection
+
 
 @section('content')
 
+  <p>
 
 <script>
 function getChartColors() {
@@ -228,7 +227,7 @@ function getChartColors() {
             <div class="col-md-3 col-sm-6 mb-3">
                 <div class="card">
                     <div class="card-body">
-                        <span class="badge badge-metric bg-info text-white">Dia con mayor venta</span>
+                        <span class="badge badge-metric bg-info text-white">Día con mayor venta</span>
                         <h3 class="mt-2 mb-1">
                             @if ($diaMayorVenta)
                                 {{ $diaMayorVenta }}
@@ -308,7 +307,7 @@ function getChartColors() {
     @if ($fuente === '' || $fuente === null || $fuente === 'pagos')
         <div class="card mb-4" style="height: 420px;">
             <div class="card-header">
-                <h3 class="card-title">Ventas por dia</h3>
+                <h3 class="card-title">Ventas por día</h3>
             </div>
             <div class="card-body">
                 <div style="height: 360px;">
@@ -319,7 +318,7 @@ function getChartColors() {
 
         <div class="card mb-4" style="height: 360px;">
             <div class="card-header">
-                <h3 class="card-title">Distribucion de ventas por evento</h3>
+                <h3 class="card-title">Distribución de ventas por evento</h3>
             </div>
             <div class="card-body">
                 <div style="height: 300px;">
@@ -377,7 +376,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         data: @json($datosVentasDia),
                         borderColor: getChartColors()[0],
                         backgroundColor: getChartColors()[1],
-                        borderWidth: 2,
+                        borderWidth: 0,
                         fill: false,
                         tension: 0.25
                     }]
@@ -403,7 +402,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     datasets: [{
                         data: @json($datosVentasEvento),
                         backgroundColor: getChartColors(),
-                        borderWidth: 1
+                        borderWidth: 0
                     }]
                 },
                 options: {
@@ -432,7 +431,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         data: @json($datosBoletosVendidos),
                         backgroundColor: getChartColors()[0],
                         borderColor: getChartColors()[1],
-                        borderWidth: 1
+                        borderWidth: 0
                     }]
                 },
                 options: {
@@ -459,14 +458,14 @@ document.addEventListener('DOMContentLoaded', () => {
                             data: @json($datosBoletosVendidos),
                             backgroundColor: getChartColors()[0],
                             borderColor: getChartColors()[0],
-                            borderWidth: 1
+                            borderWidth: 0
                         },
                         {
                             label: 'Escaneados',
                             data: @json($datosBoletosEscaneados),
                             backgroundColor: getChartColors()[2],
                             borderColor: getChartColors()[2],
-                            borderWidth: 1
+                            borderWidth: 0
                         }
                     ]
                 },

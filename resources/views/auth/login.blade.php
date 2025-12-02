@@ -8,12 +8,51 @@
     {{-- AdminLTE 3 desde CDN --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
+
 </head>
+
+
+<style>
+    body.login-page {
+        background: url("{{ asset('images/fondo2.jpg') }}") no-repeat center center fixed;
+        background-size: cover;
+        position: relative;
+    }
+
+    /* Capa semitransparente encima del fondo */
+    body.login-page::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0); /* Ajusta transparencia aquí */
+        z-index: -1;
+    }
+
+    /* Asegura que el contenido se mantenga arriba */
+    .login-box, .card {
+        position: relative;
+        z-index: 10;
+    }
+</style>
+
+
 <body class="hold-transition login-page">
+
+
+{{-- LOGO ARRIBA DEL LOGIN BOX --}}
+<div class="login-logo" style="margin-bottom: 5px;">
+    <img src="{{ asset('images/logo-login.png') }}"
+         alt="Logo"
+         style="width:150px; margin-bottom:15px;">
+</div>
 
 <div class="login-box">
     <div class="login-logo">
-        <a href="{{ url('/') }}"><b>Acceso</b>Seguro</a>
+        <a href="{{ url('/') }}"><span style="color:#7719D6;"><b>Acceso</b>Seguro</a>
     </div>
 
     <div class="card">

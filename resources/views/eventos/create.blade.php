@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
 
     <div class="d-flex justify-content-between align-items-center">
-        <h1 class="m-0">Crear evento</h1>
+        <h1 class="m-0">Registro de eventos</h1>
     </div>
 @stop
 
@@ -29,9 +29,11 @@
    
      </div>
 
+     <div class="container" style="max-width: 1200px;">
+  
      <div class="card">
         <div class="card-header">
-            <h3 class="card-title">Nuevo evento</h3>
+            <h3 class="card-title">Nuevo registro</h3>
         </div>
 
         <div class="card-body">
@@ -43,7 +45,7 @@
 
                 {{-- Titulo --}}
                 <div class="form-group mb-3">
-                    <label for="titulo">Titulo</label>
+                    <label for="titulo">Título</label>
                     <input
                         type="text"
                         id="titulo"
@@ -56,7 +58,7 @@
 
                 {{-- Descripcion --}}
                 <div class="form-group mb-3">
-                    <label for="descripcion">Descripcion</label>
+                    <label for="descripcion">Descripción</label>
                     <textarea
                         id="descripcion"
                         name="descripcion"
@@ -94,7 +96,7 @@
 
                 {{-- Ubicacion --}}
                 <div class="form-group mb-3">
-                    <label for="ubicacion">Ubicacion</label>
+                    <label for="ubicacion">Ubicación</label>
                     <input
                         type="text"
                         id="ubicacion"
@@ -145,7 +147,7 @@
                 </div>
 
                 <div class="d-flex justify-content-between">
-                    <a href="{{ route('eventos.index') }}" class="btn btn-secondary">
+                    <a href="{{ route('eventos.index') }}" class="btn btn-outline-secondary">
                         Cancelar
                     </a>
 
@@ -154,7 +156,8 @@
                     </button>
                 </div>
             </form>
-            
+       
+            </div>
         </div>
     </div>
 @stop

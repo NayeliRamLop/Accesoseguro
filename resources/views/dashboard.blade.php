@@ -50,8 +50,9 @@
 @section('content_header')
 <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
 
+
     <div class="d-flex justify-content-between align-items-center">
-        <h1 class="m-0"><b>Acceso seguro</b></h1>
+        <h1 class="m-0">Bienvenido al panel de control</h1>
 
         <form action="{{ route('logout') }}" method="POST">
             @csrf
@@ -63,11 +64,7 @@
 @endsection
 
 @section('content')
-    <div class="row mb-3">
-        <div class="col-12">
-            <p>Bienvenido al panel de control</p>
-        </div>
-    </div>
+
 
     <div id="assetCarousel" class="carousel slide mb-5" data-ride="carousel" data-interval="3000">
         <div class="carousel-inner">
@@ -154,12 +151,12 @@
             <div class="small-box bg-warning">
                 <div class="inner">
                     <h3>Eventos</h3>
-                    <p>Gestion de eventos</p>
+                    <p>Gestión de eventos</p>
                 </div>
                 <div class="icon">
                     <i class="fas fa-calendar-alt"></i>
                 </div>
-                <a href="{{ route('eventos.index') }}" class="small-box-footer">
+                <a href="{{ route('eventos.index') }}"  class="small-box-footer">
                     Ir a eventos <i class="fas fa-arrow-circle-right"></i>
                 </a>
             </div>
@@ -189,7 +186,7 @@
                     <p>Resumen de ventas</p>
                 </div>
                 <div class="icon">
-                    <i class="fas fa-shopping-cart"></i>
+                    <i class="fas fa-dollar-sign"></i>
                 </div>
                 <a href="{{ route('ventas.index') }}" class="small-box-footer">
                     Ir a ventas <i class="fas fa-arrow-circle-right"></i>
@@ -201,14 +198,14 @@
         <div class="col-lg-3 col-md-6 col-sm-12">
             <div class="small-box bg-success">
                 <div class="inner">
-                    <h3>Panel de analisis</h3>
-                    <p>Analisis de ventas y boletos</p>
+                    <h3>Panel de análisis</h3>
+                    <p>Análisis de ventas y boletos</p>
                 </div>
                 <div class="icon">
                     <i class="fas fa-chart-line"></i>
                 </div>
                 <a href="{{ url('/analisis-ventas') }}" class="small-box-footer">
-                    Ir a panel de analisis <i class="fas fa-arrow-circle-right"></i>
+                    Ir a panel de análisis <i class="fas fa-arrow-circle-right"></i>
                 </a>
             </div>
         </div>

@@ -33,7 +33,7 @@
     <h1>Reporte de boletos</h1>
 
     <div class="resumen">
-        <strong>Fecha de generacion:</strong> {{ $fechaGenerado }}<br>
+        <strong>Fecha de generación:</strong> {{ $fechaGenerado }}<br>
         <strong>Total de boletos:</strong> {{ $totalBoletos }}<br>
         <strong>Total monto:</strong> ${{ number_format($totalMonto, 2) }}
     </div>

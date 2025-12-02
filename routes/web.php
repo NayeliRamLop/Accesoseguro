@@ -147,6 +147,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/analisis-ventas', function () {
           return view('analisis_ventas');
          })->name('analisis.ventas');
-
-
+   
+         //PERFIL USUARIO
+    Route::get('/admin/settings', [App\Http\Controllers\Admin\SettingsController::class, 'index'])
+        ->name('admin.settings');
 });

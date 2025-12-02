@@ -11,8 +11,7 @@
     <div class="d-flex justify-content-between align-items-center">
         <h1>Pagos realizados</h1>
 
-        <a href="{{ route('ventas.index') }}" class="btn btn-secondary">
-            <i class="fas fa-arrow-left"></i> Volver a Ventas
+        <a href="{{ route('ventas.index') }}" class="btn btn-outline-secondary">Volver a Ventas
         </a>
     </div>
 @stop

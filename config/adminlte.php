@@ -338,13 +338,13 @@ return [
        
                 [
                     'text' => 'Eventos',
-                        'icon' => 'fas fa-calendar-day',
+                        'icon' => 'fas fa-calendar-alt',
                     'url' => 'eventos',
                 ],
               
                 [
                     'text' => 'Boletos',
-                        'icon' => '	fas fa-list-alt',
+                        'icon' => 'fas fa-ticket-alt',
                     'url' => 'boletos',
                 ],
 
